@@ -3,7 +3,7 @@
 
 TFCountdown is a simple countdown timer that's easy to incorporate in any app. Use it to display a countdown and execute callback functions at the completion of the countdown.
 
-Features include:<
+Features include:
 
 * Highly accurate
 * Easy-to-use - start, pause, reset, add time, or entirely reinitialize the timer with ease.
