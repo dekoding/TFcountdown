@@ -39,7 +39,6 @@ var Timer = function(options, callback) {
             };
             obj.addtime = function(time) {
             	ms = obj.iterate() + (time * 1000);
-                //clearInterval(timer);
                 obj.go();
             };
             obj.settime = function(reset) {
