@@ -1,0 +1,31 @@
+.control-container button {
+    width: 80px;
+}
+.timer-container {
+    margin-top: 30px;
+    border: 2px inset #595959;
+    border-radius: 4px;
+    height: 60px;
+    width: 180px;
+    text-align: center;
+    padding: 2px;
+    background-color: #A4A4A4;
+}
+.timer-container button {
+    width:56px;
+    display:inline-flex;
+    border: 1px;
+}
+.timer-container div {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.2em;
+}
+.time {
+    width: 60px;
+}
+.tfc {
+    font-size: 6pt;
+    color: #EEE;
+}
