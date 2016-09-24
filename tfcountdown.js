@@ -8,7 +8,6 @@ var Timer = function(options, callback) {
         */
 
         obj.seconds = (this.seconds != null ? this.seconds : (options.seconds != null ? options.seconds : null));
-        obj.container = (this.container != null ? this.container : (options.container != null ? options.container : null));
         obj.pauseButton = (this.pauseButton != null ? this.pauseButton : (options.pauseButton != null ? options.pauseButton : null));
         obj.goButton = (this.goButton != null ? this.goButton : (options.goButton != null ? options.goButton : null));
         obj.resetButton = (this.resetButton != null ? this.resetButton : (options.resetButton != null ? options.resetButton : null));
@@ -16,11 +15,11 @@ var Timer = function(options, callback) {
         obj.callback = (this.callback != null ? this.callback : (callback != null ? callback : null));
 
         // Timer core
-        if(obj.seconds != null && obj.container != null) {
+        if(obj.seconds != null) {
             let startTime;
             let timer;
             let ms = obj.seconds*1000
-            let display = document.getElementById(obj.container);
+            //let display = document.getElementById(obj.container);
             let now;
             let resetMs = ms;
 
@@ -41,6 +40,9 @@ var Timer = function(options, callback) {
             	ms = obj.iterate() + (time * 1000);
                 obj.go();
             };
+            obj.gettime = function() {
+                return Math.floor(now / 1000);
+            }
             obj.settime = function(reset) {
                 if(!startTime || reset != null) {
                     startTime = new Date().getTime();
@@ -48,30 +50,35 @@ var Timer = function(options, callback) {
                 }
                 now = Math.max(0,ms-(new Date().getTime()-startTime));
 
-                let delta = now / 1000;
+                // Allows you to start without a container, or change the container.
+                obj.container = (this.container != null ? this.container : (options.container != null ? options.container : null));
+                if(obj.container != null) {
 
-                let h = Math.floor(delta / 3600) % 24;
-                delta -= h * 3600;
-                h = (h < 10 ? "0" : "") + h;
+                    let delta = now / 1000;
 
-                let m = Math.floor(delta / 60) % 60;
-                delta -= m * 60;
-                m = (m < 10 ? "0" : "") + m;
+                    let h = Math.floor(delta / 3600) % 24;
+                    delta -= h * 3600;
+                    h = (h < 10 ? "0" : "") + h;
 
-                let s = Math.floor(delta % 60);
-                s = (s < 10 ? "0" : "") + s;
+                    let m = Math.floor(delta / 60) % 60;
+                    delta -= m * 60;
+                    m = (m < 10 ? "0" : "") + m;
 
-                let clock = '<span>' + h + ':' + m + ':' + s + '</span>';
-                if(display.innerHTML != clock) display.innerHTML = clock;
+                    let s = Math.floor(delta % 60);
+                    s = (s < 10 ? "0" : "") + s;
+
+                    let clock = '<span>' + h + ':' + m + ':' + s + '</span>';
+                    if(document.getElementById(obj.container).innerHTML != clock) document.getElementById(obj.container).innerHTML = clock;
+                }
             }
             obj.iterate = function() {
                 obj.settime();
                 if(Math.floor(now) == 0) {
                     clearInterval(timer);
                     // This allows changing the callback function on the fly!
-                    let callback = (this.callback != null ? this.callback : (obj.callback != null ? obj.callback : null));
-                    if(callback != null) {
-                        callback();
+                    obj.callback = (this.callback != null ? this.callback : (obj.callback != null ? obj.callback : null));
+                    if(obj.callback != null) {
+                        obj.callback();
                     }
                 } else {
                     return now;
@@ -85,7 +92,7 @@ var Timer = function(options, callback) {
             if(obj.resetButton != null) document.getElementById(obj.resetButton).onclick = obj.reset;
         }
         else {
-            throw "error: Cannot initialize timer without seconds and target container defined."
+            throw "error: Cannot initialize timer without seconds defined."
         }
     }
     return obj;
