@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TFCountdown Example</title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link href="assets/styles/styles.css" rel="stylesheet">
+</head>
+<body>
+    <h1>TFCountdown</h1>
+    <h3>It's the final countdown you'll ever need!</h3>
+    <p>TFCountdown is a simple countdown timer that's easy to incorporate in any app. Use it to display a countdown and execute callback functions at the completion of the countdown.</p>
+    <p>Features include:</p>
+    <ul>
+        <li>Highly accurate</li>
+        <li>Easy to use - start, pause, reset, add time, or entirely reinitialize the timer with ease!</li>
+        <li>Set any of the timer's parameters at creation, or any time after.</li>
+    </ul>
+    <h4>Example</h4>
+    <div class="control-container">
+        <div class="control">
+            <input id="hours" type="number" class="time" value="0" />:
+            <input id="minutes" type="number" class="time" value="0" />:
+            <input id="seconds" type="number" class="time" value="30" />
+            <button id="set-time">Set Time</button> Reinitialize the timer with a new base running time.
+        </div>
+        <div class="control">
+            <input id="add-hours" type="number" class="time" value="0" />:
+            <input id="add-minutes" type="number" class="time" value="0" />:
+            <input id="add-seconds" type="number" class="time" value="0" />
+            <button id="add-time">Add Time</button> Add time to an existing or running timer without reinitializing it.
+        </div>
+    </div>
+
+    <div class="timer-container">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+        <div id="timer"></div>
+    </div>
+    <button id="set-callback">Set a callback</button> Causes an alert to appear when the timer reaches zero.<a href="http://www.azlyrics.com/lyrics/europe/thefinalcountdown.html" class="tfc">.</a>Try clicking it after the timer has already started!
+    <script src="assets/scripts/timer.js"></script>
+    <script src="assets/scripts/example.js"></script>
+</body>
+</html>
