@@ -19,7 +19,6 @@ var Timer = function(options, callback) {
             let startTime;
             let timer;
             let ms = obj.seconds*1000
-            //let display = document.getElementById(obj.container);
             let now;
             let resetMs = ms;
 
