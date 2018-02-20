@@ -33,7 +33,5 @@ document.getElementById('set-time').onclick = setTime;
 // Example function for adding a callback after the timer is initialized and running
 document.getElementById('set-callback').onclick = function() {
     const message = document.getElementById('callback-message').value;
-    timer.callback = function() {
-        alert(message);
-    };
+    timer.callback = () => alert(message);
 };

@@ -12,25 +12,26 @@ Features include:
 Example use:
 
 ```javascript
+// Create an object of options
 const timerOptions = {
     seconds: 30,          // Time in seconds to run the timer for
     container: 'timer',   // ID of the DOM element to place the visible timer in (optional)
-    pauseButton: 'pause', // Buttons are the IDs of DOM elements to attach a handler to
+    pauseButton: 'pause', // Buttons are the IDs of DOM elements to attach a handler to (optional)
     goButton: 'start',
     resetButton: 'reset'
 };
+// Initialize the timer
 const timer = new Timer(timerOptions);
-
-// When the timer's parameters are right, initialize it.
-timer.init();
 
 // And then run it
 timer.go();
 
 // Options can be changed on the fly
-timer.callback = function() { console.log("This can be done even while the timer is running!"); };
+timer.callback = function() { console.log('This can be done even while the timer is running!'); };
 
 // You can even add time to a running timer. This adds one minute.
 timer.addtime(60);
+
+
 
 ```

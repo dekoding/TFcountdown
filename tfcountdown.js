@@ -90,10 +90,8 @@ const Timer = function(options, callback) {
         iterate() {
             obj.setRemaining();
             if(Math.floor(now) === 0) {
-                console.log('Hit bottom');
                 clearInterval(timer);
-                if(obj.callback !== null) {
-                    console.log(obj.callback);
+                if(obj.callback !== null && obj.callback !== undefined) {
                     obj.callback();
                 }
             } else {
