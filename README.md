@@ -12,14 +12,14 @@ Features include:
 Example use:
 
 ```javascript
-var timerOptions = {
+const timerOptions = {
     seconds: 30,          // Time in seconds to run the timer for
-    container: 'timer',   // ID of the DOM element to place the timer in
-    pauseButton: 'pause', // Buttons are DOM elements to attach a handler to
+    container: 'timer',   // ID of the DOM element to place the visible timer in (optional)
+    pauseButton: 'pause', // Buttons are the IDs of DOM elements to attach a handler to
     goButton: 'start',
     resetButton: 'reset'
 };
-var timer = new Timer(timerOptions);
+const timer = new Timer(timerOptions);
 
 // When the timer's parameters are right, initialize it.
 timer.init();

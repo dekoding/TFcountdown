@@ -5,42 +5,109 @@
     <title>TFCountdown Example</title>
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link href="assets/styles/styles.css" rel="stylesheet">
 </head>
 <body>
-    <h1>TFCountdown</h1>
-    <h3>It's the final countdown you'll ever need!</h3>
-    <p>TFCountdown is a simple countdown timer that's easy to incorporate in any app. Use it to display a countdown and execute callback functions at the completion of the countdown.</p>
-    <p>Features include:</p>
-    <ul>
-        <li>Highly accurate</li>
-        <li>Easy to use - start, pause, reset, add time, or entirely reinitialize the timer with ease!</li>
-        <li>Set any of the timer's parameters at creation, or any time after.</li>
-    </ul>
-    <h4>Example</h4>
-    <div class="control-container">
-        <div class="control">
-            <input id="hours" type="number" class="time" value="0" />:
-            <input id="minutes" type="number" class="time" value="0" />:
-            <input id="seconds" type="number" class="time" value="30" />
-            <button id="set-time">Set Time</button> Reinitialize the timer with a new base running time.
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>TFCountdown</h1>
+            <h3>It's the final countdown you'll ever need!</h3>
         </div>
-        <div class="control">
-            <input id="add-hours" type="number" class="time" value="0" />:
-            <input id="add-minutes" type="number" class="time" value="0" />:
-            <input id="add-seconds" type="number" class="time" value="0" />
-            <button id="add-time">Add Time</button> Add time to an existing or running timer without reinitializing it.
+     
+        <p>TFCountdown is a simple countdown timer that's easy to incorporate in any app. Use it to display a countdown and execute callback functions at the completion of the countdown.</p>
+        <p>Features include:</p>
+        <ul>
+            <li>Highly accurate</li>
+            <li>Easy to use - start, pause, reset, add time, or entirely reinitialize the timer with ease!</li>
+            <li>Set any of the timer's parameters at creation, or any time after.</li>
+        </ul>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Example</div>
+                <div class="card-subtitle mb-2 text-muted">
+                    Timer parameters
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2">
+                            <p>Hours</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Minutes</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="hours" type="number" value="0" />
+                        </div>
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="minutes" type="number" value="0" />
+                        </div>
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="seconds" type="number" value="30" />
+                        </div>
+                        <div class="col-2">
+                            <button id="set-time" class="btn btn-default btn-block btn-sm">Set Time</button>
+                        </div>
+                        <div class="col-4">
+                            <p class="small">Reinitialize the timer with a new base running time.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="add-hours" type="number" value="0" />
+                        </div>
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="add-minutes" type="number" value="0" />
+                        </div>
+                        <div class="col-2">
+                            <input class="form-control form-control-sm" id="add-seconds" type="number" value="0" />
+                        </div>
+                        <div class="col-2">
+                            <button id="add-time" class="btn btn-default btn-block btn-sm">Add Time</button>
+                        </div>
+                        <div class="col-4">
+                            <p class="small">Add time to an existing or running timer without reinitializing it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-subtitle mb-2 text-muted">
+                    Timer controls
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="btn-group">
+                            <button id="start" class="btn btn-success">Start</button>
+                            <button id="pause" class="btn btn-warning">Pause</button>
+                            <button id="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="callback-message">
+                                Set a callback message
+                            </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="callback-message"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" id="set-callback">Set</button>
+                                </div>
+                                <small class="form-text text-muted">Causes an alert to appear when the timer reaches zero. Try setting it after the timer has already started!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <h2 id="timer"></h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="timer-container">
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
-        <div id="timer"></div>
-    </div>
-    <button id="set-callback">Set a callback</button> Causes an alert to appear when the timer reaches zero.<a href="http://www.azlyrics.com/lyrics/europe/thefinalcountdown.html" class="tfc">.</a>Try clicking it after the timer has already started!
     <script src="tfcountdown.js"></script>
     <script src="example.js"></script>
 </body>
