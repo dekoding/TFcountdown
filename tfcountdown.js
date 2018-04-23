@@ -19,13 +19,6 @@ const Timer = function(options, callback) {
         callback: options.callback !== null ? options.callback : null,
         
         go() {
-            /* if (!paused) {
-                if (!running) {
-                    startTime = new Date().getTime();
-                }
-            } else {
-                paused = false;
-            } */
             startTime = new Date().getTime();
             timer = setInterval(obj.iterate,250);
             running = true;
