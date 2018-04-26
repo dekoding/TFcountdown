@@ -5,9 +5,10 @@ TFCountdown is a simple countdown timer that's easy to incorporate in any app. U
 
 Features include:
 
-* Highly accurate
+* Highly accurate.
 * Easy-to-use - start, pause, reset, add time, or entirely reinitialize the timer with ease.
 * Set any of the timer's parameters at creation, or any time after.
+* Supports up to 30 day timers.
 
 Example use:
 
@@ -32,6 +33,16 @@ timer.callback = function() { console.log('This can be done even while the timer
 // You can even add time to a running timer. This adds one minute.
 timer.addtime(60);
 
+// Timers can be customized to use individual blocks of the clock
+const secondTimerOptions = {
+    seconds: 259200, // Three days
+    daysBlock: 'days-block', // ID of DOM element to place just days in
+    hoursBlock: 'hours-block',
+    minutesBlock: 'minutes-block',
+    secondsBlock: 'seconds-block'
+};
 
-
+// These options are ideal for when you want to track just one block of time, or need to style each component individually
 ```
+
+NPM package coming soon!
